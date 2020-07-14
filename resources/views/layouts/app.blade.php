@@ -54,7 +54,7 @@
         </div>
     </header>
 
-{{--    <x-top-menu :category="$category"></x-top-menu>--}}
+    <x-top-menu :category="$category"></x-top-menu>
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateNewsRequest;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -167,5 +168,19 @@ class NewsController extends Controller
 
     public function hello() {
         return view('news.greeting');
+    }
+
+    public function create()
+    {
+        return view('news.create');
+    }
+
+    public function store(Request $request)
+    {
+        $title = $request->input('title');
+        $text = $request->input('text');
+        $str = "title:". $title ."-text:". $text;
+        file_put_contents(storage_path('app/public/db.text'), $str, FILE_APPEND);
+        return redirect()->route('allnews');
     }
 }

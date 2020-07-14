@@ -22,6 +22,15 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/greeting', 'NewsController@hello')->name('news.hello');
     Route::get('/categoryNews/{category}', 'NewsController@newsByCategory')->where('name', '[A-Za-z]+')->name('news.bycategory');
     Route::get('/{id}', 'NewsController@newsById')->where('id', '[0-9]')->name('news.byid');
+    Route::get('/create', 'NewsController@create')->name('news.create');
+    Route::post('/store', 'NewsController@store')->name('news.store');
+});
+
+Route::group(['prefix' => 'users'], function() {
+    Route::get('/comments', 'UsersController@comments')->name('users.comments');
+    Route::post('/addcomm', 'UsersController@addComm')->name('users.addcomm');
+    Route::get('/data', 'UsersController@data')->name('users.data');
+    Route::post('/getdata', 'UsersController@getData')->name('users.getdata');
 });
 
 Route::get('/auth', 'AuthController@index');
